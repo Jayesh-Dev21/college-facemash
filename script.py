@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 from dotenv import load_dotenv
 
@@ -47,9 +48,18 @@ def fetch_photo(roll):
         print(f"[!] Failed to fetch {roll}: {e}")
 
 if __name__ == "__main__":
-    roll_numbers = [
-        ""
-    ] #enter your roll numbers here
+    #enter your roll numbers here
+    # roll_numbers = [] 
+    # for roll in roll_number:
+    #     fetch_photo(roll)
 
-    for roll in roll_numbers:
-        fetch_photo(roll)
+    # ----------------------------------------------
+    #or use arguments
+    if len(sys.argv) > 1:
+        roll_number = sys.argv[1]
+        fetch_photo(roll_number)
+        print(f"check saves folder for {roll_number}.jpg/.png")
+    else:
+        print("No roll number provided.")
+    
+    
