@@ -1,2 +1,6 @@
 .env
 
+.src
+
+saves/*.jpg
+saves/*.png
