@@ -13,9 +13,16 @@ enter your `URL` and `Route`
 
 ```bash
 python3 -m venv .src
+source .src/bin/activate
 ```
 
 create a virtual env
+
+and to deactivate it
+```bash
+deactivate
+```
+
 
 ```bash
 pip install -r requirements.txt
