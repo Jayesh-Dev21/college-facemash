@@ -33,10 +33,19 @@ def fetch_photo(roll):
         content_type = response.headers.get("Content-Type", "")
         if "image" not in content_type:
             print(f"[!] Roll {roll}: No image returned (content-type: {content_type})")
-            return
+            print("[!] This might be a PDF or an error page, please checking.")
+            if "pdf" not in content_type:
+                print("[!] Not a PDF either.")
+                return
 
         location = "saves"
-        ext = "jpg" if "jpeg" in content_type else "png"
+        if "jpeg" in content_type:
+            ext = "jpg"
+        elif "pdf" in content_type:
+            ext = "pdf"
+        else:
+            ext = "png"
+
         filename = f"{location}/{roll}.{ext}"
 
         with open(filename, "wb") as f:
@@ -48,12 +57,9 @@ def fetch_photo(roll):
         print(f"[!] Failed to fetch {roll}: {e}")
 
 if __name__ == "__main__":
-    #enter your roll numbers here
-    # roll_numbers = [] 
-    # for roll in roll_number:
-    #     fetch_photo(roll)
-
-    # ----------------------------------------------
+    # Create directory if it doesn't exist
+    if not os.path.exists("image_db"):
+        os.makedirs("image_db")
     #or use arguments
     if len(sys.argv) > 1:
         roll_number = sys.argv[1]
