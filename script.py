@@ -58,8 +58,8 @@ def fetch_photo(roll):
 
 if __name__ == "__main__":
     # Create directory if it doesn't exist
-    if not os.path.exists("image_db"):
-        os.makedirs("image_db")
+    if not os.path.exists("saves"):
+        os.makedirs("saves")
     #or use arguments
     if len(sys.argv) > 1:
         roll_number = sys.argv[1]
